@@ -36,6 +36,24 @@ export default class Storage {
     )
   }
 
+  async allKeys() {
+    try {
+      return await this.instance.methods.allKeys().call()
+    } catch (error) {
+      log({ title: 'Storage: allKeys()', value: error, color: 'red' })
+      throw error
+    }
+  }
+
+  async allData() {
+    try {
+      return await this.instance.methods.allKeysData().call()
+    } catch (error) {
+      log({ title: 'Storage: allData()', value: error, color: 'red' })
+      throw error
+    }
+  }
+
   async get(key: string) {
     try {
       const { info, owner } = await this.instance.methods.getData(key).call()
@@ -93,25 +111,39 @@ export default class Storage {
     }
   }
 
-  async delete({ key }: { key: string }) {
+  async clearData({ key }: { key: string }) {
     try {
       const { data, owner } = await this.get(key)
-      const response = {
-        result: false,
-        message: '',
-        sourceData: data,
-        sourceOwner: owner,
-      }
 
-      if (!data || !owner) {
-        response.message = 'data or owner are empty'
-
-        return response
-      }
+      if (!data || !owner) return false
 
       return new Promise(async (resolve, reject) => {
         await this.signerInstance.methods
           .setKeyData(key, {
+            owner,
+            info: '',
+          })
+          .send({
+            from: owner,
+          })
+          .then(resolve)
+          .catch(reject)
+      })
+    } catch (error) {
+      log({ title: 'Storage: clearData()', value: error, color: 'red' })
+      throw error
+    }
+  }
+
+  async delete({ key }: { key: string }) {
+    try {
+      const { owner } = await this.get(key)
+
+      if (!owner) return false
+
+      return new Promise(async (resolve, reject) => {
+        await this.signerInstance.methods
+          .clearKeyData(key, {
             owner,
             info: '',
           })
@@ -127,7 +159,7 @@ export default class Storage {
     }
   }
 
-  mergeData({ oldData, newData }: { oldData: Data; newData: Data }) {
+  mergeData({ oldData = {}, newData = {} }: { oldData: Data; newData: Data }) {
     try {
       const data = { ...oldData }
 

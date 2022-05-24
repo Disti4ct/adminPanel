@@ -45,7 +45,7 @@ function App() {
             onChange={onChange}
             onSave={onSave}
             defaultValues={{
-              projectName: 'ShitSwap',
+              projectName: 'TopSwap',
               backgroundColorDark: '#900',
               textColorLight: '#eee',
               // const default = await storage.get(...)
