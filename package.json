@@ -1,0 +1,27 @@
+{
+  "name": "packages",
+  "private": true,
+  "workspaces": [
+    "examples/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build-panel": "lerna run build --scope panel",
+    "build-storage": "lerna run build --scope storage",
+    "build": "lerna run build --scope panel --scope storage",
+    "watch-panel": "lerna run watch --scope panel",
+    "watch-storage": "lerna run watch --scope storage",
+    "watch": "lerna run watch --scope panel --scope storage",
+    "package": "lerna exec --scope panel --scope storage -- npm pack"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.6",
+    "@types/react-dom": "^17.0.5",
+    "lerna": "^4.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.7"
+  }
+}
