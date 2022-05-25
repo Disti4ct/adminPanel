@@ -12,8 +12,10 @@ export default function SavedSettings({
       <Mui.TextareaAutosize
         aria-label="minimum height"
         minRows={3}
-        style={{ width: 200 }}
-        value={settings ? JSON.stringify(settings) : 'No settings'}
+        style={{ width: 600, fontSize: '1.2rem' }}
+        value={
+          settings ? JSON.stringify(settings, undefined, 4) : 'No settings'
+        }
       />
     </section>
   )

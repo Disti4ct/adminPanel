@@ -12,7 +12,6 @@ import {
 } from 'panel'
 
 import { Storage } from 'storage'
-import { useInjected } from './hooks'
 import SavedSettings from './SavedSettings'
 import { NETWORKS, STORAGE_DEV_KEY } from './constants'
 
@@ -22,9 +21,7 @@ enum Theme {
 }
 
 export default function App() {
-  const { library, chainId } = useWeb3React()
-  const {} = useInjected()
-
+  const { library, chainId, account } = useWeb3React()
   const [mode, setMode] = React.useState<Theme>(Theme.light)
 
   const toggleTheme = () => {
@@ -67,13 +64,13 @@ export default function App() {
       const fetchSettings = async () => {
         const { data, owner } = await storage.get(STORAGE_DEV_KEY)
 
-        setStorageOwner(owner)
-        setStorageSettings(data[STORAGE_DEV_KEY])
+        setStorageOwner(owner || account)
+        setStorageSettings(data)
       }
 
       fetchSettings()
     }
-  }, [storage])
+  }, [storage, account])
 
   const onChange = (settings: MultiTypeSettings) => {
     setAppSettings((prevSettings) => ({
