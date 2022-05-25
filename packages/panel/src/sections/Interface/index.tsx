@@ -356,6 +356,7 @@ export default function Interface({
                 title="Navigation links"
                 onChange={(newItems) => setNavigationLinks(newItems)}
                 isValidItem={(address) => Boolean(validUrl.isUri(address))}
+                defaultItems={navigationLinks}
                 placeholder="https://example.com"
                 withName
               />
@@ -370,6 +371,7 @@ export default function Interface({
                 title="Social links"
                 onChange={(newItems) => setSocialLinks(newItems)}
                 isValidItem={(address) => Boolean(validUrl.isUri(address))}
+                defaultItems={socialLinks}
                 placeholder="https://example.com"
               />
             </Option>
@@ -383,6 +385,7 @@ export default function Interface({
                 title="Menu links"
                 onChange={(newItems) => setMenuLinks(newItems)}
                 isValidItem={(address) => Boolean(validUrl.isUri(address))}
+                defaultItems={menuLinks}
                 placeholder="https://example.com"
                 withName
               />

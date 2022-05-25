@@ -42,6 +42,14 @@ export default function App() {
   const [storageSettings, setStorageSettings] = useState<any | null>(null)
   const [storageOwner, setStorageOwner] = useState('')
   const [appSettings, setAppSettings] = useState({})
+  const [needToSave, setNeedToSave] = useState(false)
+
+  useEffect(() => {
+    setNeedToSave(
+      !storageSettings ||
+        JSON.stringify(storageSettings) !== JSON.stringify(appSettings)
+    )
+  }, [storageSettings, appSettings])
 
   useEffect(() => {
     if (chainId) {
@@ -133,11 +141,7 @@ export default function App() {
             <Interface
               onChange={onChange}
               onSave={onSave}
-              defaultValues={{
-                projectName: 'TopSwap',
-                backgroundColorDark: '#900',
-                textColorLight: '#eee',
-              }}
+              defaultValues={storageSettings}
               settings={{
                 [InterfaceOption.common]: true,
                 [InterfaceOption.colors]: {
@@ -159,7 +163,7 @@ export default function App() {
               }}
             />
 
-            <Button onClick={startSaving} fullWidth>
+            <Button onClick={startSaving} disabled={!needToSave} fullWidth>
               Save settings
             </Button>
           </>

@@ -17,17 +17,19 @@ interface FullItem {
 export default function List({
   title,
   withName,
+  defaultItems = [],
   onChange,
   isValidItem,
   placeholder,
 }: {
   title: string
   withName?: boolean
+  defaultItems?: FullItem[]
   isValidItem?: (item: string) => boolean
   onChange: (items: FullItem[]) => void
   placeholder?: string
 }) {
-  const [items, setItems] = useState<FullItem[]>([])
+  const [items, setItems] = useState<FullItem[]>(defaultItems)
   const [newName, setNewName] = useState<string>('')
   const [newItem, setNewItem] = useState<string>('')
   const [itemError, setItemError] = useState<string>('')
