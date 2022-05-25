@@ -4,7 +4,6 @@ import { Tabs as MuiTabs, Tab } from '@mui/material'
 export interface Tab {
   title: string
   id: number
-  component: JSX.Element
 }
 
 export default function Tabs({

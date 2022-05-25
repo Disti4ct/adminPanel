@@ -31,3 +31,6 @@ export * from './components/Modal'
 export { default as Interface } from './sections/Interface'
 export * from './sections/Interface'
 export * from './sections/Interface/types'
+
+export * as Mui from '@mui/material'
+export { ThemeProvider, createTheme } from '@mui/material/styles'
