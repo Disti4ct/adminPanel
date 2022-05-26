@@ -28,7 +28,10 @@ export default function InjectedProvider({ children }: any) {
 
     try {
       if (!isActive) {
-        await activate(injected).then(() => setShouldDisable(false))
+        await activate(injected).then(() => {
+          setIsActive(true)
+          setShouldDisable(false)
+        })
       }
     } catch (error) {
       console.error('Error on connecting: ', error)
@@ -37,11 +40,13 @@ export default function InjectedProvider({ children }: any) {
 
   const disconnect = useCallback(async () => {
     try {
-      await deactivate()
+      if (active) {
+        await deactivate()
+      }
     } catch (error) {
       console.error('Error on disconnect: ', error)
     }
-  }, [deactivate])
+  }, [deactivate, active])
 
   const value = useMemo(
     () => ({

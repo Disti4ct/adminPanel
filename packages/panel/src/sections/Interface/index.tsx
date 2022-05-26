@@ -115,43 +115,43 @@ export default function Interface({
   defaultValues?: AllSettings
 }) {
   const [projectName, setProjectName] = useState(
-    defaultValues.projectName || ''
+    defaultValues?.projectName || ''
   )
-  const [logoUrl, setLogoUrl] = useState(defaultValues.logoUrl || '')
+  const [logoUrl, setLogoUrl] = useState(defaultValues?.logoUrl || '')
   const [backgroundUrl, setBackgroundUrl] = useState(
-    defaultValues.backgroundUrl || ''
+    defaultValues?.backgroundUrl || ''
   )
   const [disableSourceCopyright, setDisableSourceCopyright] = useState(
-    defaultValues.disableSourceCopyright || false
+    defaultValues?.disableSourceCopyright || false
   )
 
   const toggleDisableSourceCopyright = () =>
     setDisableSourceCopyright((prevValue) => !prevValue)
 
   const [primaryColor, setPrimaryColor] = useState(
-    defaultValues.primaryColor || ''
+    defaultValues?.primaryColor || ''
   )
   const [backgroundColorLight, setBackroundColorLight] = useState(
-    defaultValues.backgroundColorLight || ''
+    defaultValues?.backgroundColorLight || ''
   )
   const [backgroundColorDark, setBackroundColorDark] = useState(
-    defaultValues.backgroundColorDark || ''
+    defaultValues?.backgroundColorDark || ''
   )
   const [textColorLight, setTextColorLight] = useState(
-    defaultValues.textColorLight || ''
+    defaultValues?.textColorLight || ''
   )
   const [textColorDark, setTextColorDark] = useState(
-    defaultValues.textColorDark || ''
+    defaultValues?.textColorDark || ''
   )
 
   const [navigationLinks, setNavigationLinks] = useState<NavigationLinkItem[]>(
-    defaultValues.navigationLinks || []
+    defaultValues?.navigationLinks || []
   )
   const [socialLinks, setSocialLinks] = useState<BaseLinkItem[]>(
-    defaultValues.socialLinks || []
+    defaultValues?.socialLinks || []
   )
   const [menuLinks, setMenuLinks] = useState<BaseLinkItem[]>(
-    defaultValues.menuLinks || []
+    defaultValues?.menuLinks || []
   )
 
   const {
