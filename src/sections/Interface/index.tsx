@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './index.scss'
-import validUrl from 'valid-url'
+import { isValidUrl } from '../../utils'
 import Typography from '@mui/material/Typography'
 import Lock from '../../components/Lock'
 import Option from '../../components/Option'
@@ -85,11 +85,6 @@ export default function Interface({
         color: false,
         background: false,
       },
-    },
-    [InterfaceOption.links]: {
-      navigation: false,
-      social: false,
-      menu: false,
     },
     [InterfaceOption.saveButton]: false,
   },
@@ -355,7 +350,7 @@ export default function Interface({
               <List
                 title="Navigation links"
                 onChange={(newItems) => setNavigationLinks(newItems)}
-                isValidItem={(address) => Boolean(validUrl.isUri(address))}
+                isValidItem={isValidUrl}
                 defaultItems={navigationLinks}
                 placeholder="https://example.com"
                 withName
@@ -370,7 +365,7 @@ export default function Interface({
               <List
                 title="Social links"
                 onChange={(newItems) => setSocialLinks(newItems)}
-                isValidItem={(address) => Boolean(validUrl.isUri(address))}
+                isValidItem={isValidUrl}
                 defaultItems={socialLinks}
                 placeholder="https://example.com"
               />
@@ -384,7 +379,7 @@ export default function Interface({
               <List
                 title="Menu links"
                 onChange={(newItems) => setMenuLinks(newItems)}
-                isValidItem={(address) => Boolean(validUrl.isUri(address))}
+                isValidItem={isValidUrl}
                 defaultItems={menuLinks}
                 placeholder="https://example.com"
                 withName
