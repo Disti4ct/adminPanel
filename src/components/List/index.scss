@@ -1,0 +1,45 @@
+.listHeader {
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+
+  .listItemWrapper {
+    border-radius: 0.25rem;
+    background-color: rgba(0, 0, 0, 0.13);
+  }
+}
+
+.listFooter {
+  display: flex;
+
+  .marginWrapper {
+    margin-right: 0.4rem;
+  }
+
+  .addButton {
+    margin-left: 0.4rem;
+  }
+}
+
+.overflow {
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 420px) {
+  .listFooter {
+    flex-direction: column;
+
+    .marginWrapper {
+      margin: 0 0 0.4rem 0;
+    }
+
+    .addButton {
+      margin: 0.4rem 0 0 0;
+    }
+  }
+}
