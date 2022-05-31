@@ -1,9 +1,0 @@
-.appWrapper {
-  max-width: 50rem;
-  margin: 0 auto;
-}
-
-.appHeader {
-  display: flex;
-  justify-content: space-between;
-}
