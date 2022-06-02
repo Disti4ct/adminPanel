@@ -23,9 +23,8 @@ export default {
     commonjs(),
     typescript({
       typescript: require('typescript'),
-      tsconfigOverride: {
-        exclude: ['**/example', '**/tests'],
-      },
+      tsconfig: './tsconfig.json',
+      useTsconfigDeclarationDir: true,
     }),
     postCSS({
       plugins: [require('autoprefixer')],
