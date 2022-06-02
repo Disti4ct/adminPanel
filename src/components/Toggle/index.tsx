@@ -1,5 +1,6 @@
 import './index.scss'
 import CheckIcon from '@mui/icons-material/Check'
+import CloseIcon from '@mui/icons-material/Close'
 import { ToggleButton } from '@mui/material'
 
 export default function Toggle({
@@ -27,7 +28,7 @@ export default function Toggle({
       onChange={onChange}
       sx={extraToggleStyles}
     >
-      <CheckIcon />
+      {value ? <CloseIcon /> : <CheckIcon />}
       {name && <span className="toggleName">{name}</span>}
     </ToggleButton>
   )

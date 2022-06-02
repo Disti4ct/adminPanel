@@ -260,7 +260,9 @@ export default function Interface({
           </Option>
           <Option>
             <Toggle
-              name="Disable source copyright"
+              name={`${
+                disableSourceCopyright ? 'Enable' : 'Disable'
+              } source copyright`}
               value={disableSourceCopyright}
               onChange={toggleDisableSourceCopyright}
               fullWidth
