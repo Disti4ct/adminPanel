@@ -1,19 +1,19 @@
 {
   "name": "panel",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
-  "types": "./lib/esm/index.d.ts",
+  "types": "./lib/types/index.d.ts",
   "files": [
     "/lib",
     "README.md"
   ],
   "engines": {
-    "node": "^16.14.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf ./lib && rollup -c",
     "watch": "rollup -cw"
   },
   "eslintConfig": {
